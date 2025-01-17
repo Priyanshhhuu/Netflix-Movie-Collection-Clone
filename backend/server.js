@@ -18,5 +18,3 @@ connectDb()
   .catch((err) => {
     console.log("MOGODB connection failed!!", err);
   });
-
-//01:24:30
