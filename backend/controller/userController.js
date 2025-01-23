@@ -108,3 +108,16 @@ export const Logout = asyncHandler((req, res) => {
     return res.status(500).json({ message: "Server Error" });
   }
 });
+
+export const authCheck = asyncHandler((req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      message: "User authenticated",
+      user: req.user,
+    });
+  } catch (error) {
+    console.log("Error in AuthCheck", error);
+    return res.status(500).json({ message: "Server Error" });
+  }
+});

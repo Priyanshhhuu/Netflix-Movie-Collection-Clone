@@ -4,6 +4,12 @@ import { ChevronRight } from "lucide-react";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // handle form submission here
+    navigate("/signup?email=" + email);
+  };
   return (
     <div className=" hero-bg relative">
       {/* Navbar */}
@@ -27,7 +33,10 @@ const AuthScreen = () => {
         <p className="mb-4">
           Ready to watch? Enter Your email to create or restart your membership.
         </p>
-        <form className="flex flex-col md:flex-row gap-4 w-1/2">
+        <form
+          className="flex flex-col md:flex-row gap-4 w-1/2"
+          onSubmit={handleFormSubmit}
+        >
           <input
             type="email"
             name="email"
@@ -88,14 +97,95 @@ const AuthScreen = () => {
       <div className="h-2 w-full bg-[#232323]" aria-hidden="true" />
       {/* 2nd Section */}
       <div className="py-10 bg-black text-white ">
-        <div className="flex max-w-6xl mx-auto items-center justify-center md:flex-row flex-col px-4 md:px-2">
+        <div className="flex max-w-6xl mx-auto items-center justify-center md:flex-row flex-col-reverse px-4 md:px-2">
           {/* Left */}
           <div className="flex-1">
             <div className="relative">
               <img src="/assets/stranger-things-lg.png" alt="" />
+              <div className="flex items-center gap-2 absolute bottom-5 left-1/2 -translate-x-1/2 bg-primary w-3/4 lg:w-1/2 h-24 border border-slate-500 rounded-md px-2 ">
+                <img src="/assets/stranger-things-sm.png" className="h-full " />
+                <div className="flex justify-between items-center w-full">
+                  <div className="flex gap-0 flex-col">
+                    <span className="text-md lg:text-lg font-bold">
+                      Stranger Things
+                    </span>
+                    <span className="text-sm text-blue-500">
+                      Downloading...
+                    </span>
+                  </div>
+                  <img
+                    src="/assets/download-icon.gif"
+                    alt=""
+                    className="h-12"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           {/* Right */}
+          <div className="flex-1 md:text-left text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+              Download your shows to watch offline.
+            </h2>
+            <p className="text-lg md:text-xl">
+              Save your favorites easily and always have something to watch.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* separator */}
+      <div className="h-2 w-full bg-[#232323]" aria-hidden="true" />
+      {/* 3rd Section */}
+      <div className="py-10 bg-black text-white">
+        <div className="flex max-w-6xl mx-auto items-center justify-center md:flex-row flex-col px-4 md:px-2">
+          {/* left */}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+              Watch everywhere.
+            </h2>
+            <p className="text-lg md:text-xl">
+              Stream your favorite shows or movies on any device.
+            </p>
+          </div>
+          {/* Right */}
+          <div className="flex-1 relative overflow-hidden">
+            <img
+              src="/assets/device-pile.png"
+              alt="tv image"
+              className="mt-4 z-20 relative"
+            />
+            <video
+              className="absolute top-2 max-w-[63%] left-1/2 -translate-x-1/2  h-4/6 z-10"
+              playsInline
+              autoPlay
+              muted
+              loop
+            >
+              <source src="/assets/video-devices.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+      {/* separator */}
+      <div className="h-2 w-full bg-[#232323]" aria-hidden="true" />
+      {/* 4th Section */}
+      <div className="py-10 bg-black text-white">
+        <div className="flex max-w-6xl mx-auto items-center justify-center flex-col-reverse md:flex-row px-4 md:px-2">
+          {/* Left */}
+          <div className="flex-1 relative">
+            <img src="/assets/kids.png" alt="" className="mt-4" />
+          </div>
+
+          {/* Right */}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+              create Profile for kids
+            </h2>
+            <p className="text-lg md:text-xl">
+              Send kids on adventures with their favorite characters in a space
+              made just for them—free with your membership.
+            </p>
+          </div>
         </div>
       </div>
     </div>
