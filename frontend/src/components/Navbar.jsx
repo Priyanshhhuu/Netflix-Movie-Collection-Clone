@@ -11,6 +11,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   //   const { setContentType } = useContentStore();
+  console.log(user.image);
 
   return (
     <header className="max-w-6xl mx-auto flex flex-wrap items-center justify-between p-4 h-20">
@@ -50,7 +51,7 @@ const Navbar = () => {
           <Search className="size-6 cursor-pointer" />
         </Link>
         <img
-          src={user.image}
+          src={`./assets${user.image.split(".")[0]}.jpg`}
           alt="Avatar"
           className="h-8 rounded cursor-pointer"
         />

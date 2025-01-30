@@ -22,7 +22,7 @@ const App = () => {
     );
   }
   return (
-    <div className=" w-full overflow-hidden bg-primary text-white">
+    <div className=" w-full overflow-hidden  text-white">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
