@@ -1,3 +1,4 @@
+import tailwindScrollbarHide from "tailwind-scrollbar-hide";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
@@ -23,5 +24,5 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [],
+  plugins: [tailwindScrollbarHide],
 };
