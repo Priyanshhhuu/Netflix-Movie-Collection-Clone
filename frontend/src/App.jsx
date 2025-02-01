@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authUser";
 import { Loader } from "lucide-react";
+import WatchPage from "./pages/WatchPage";
 
 const App = () => {
   const { user, isCheckingAuth, authCheck } = useAuthStore();
@@ -33,6 +34,10 @@ const App = () => {
           path="/signup"
           element={!user ? <SignUpPage /> : <Navigate to="/" />}
         />
+        <Route
+          path="/watch/:id/:title?"
+          element={user ? <WatchPage /> : <Navigate to="/login" />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
@@ -42,4 +47,3 @@ const App = () => {
 };
 
 export default App;
-//4:25:35

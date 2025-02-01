@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthStore } from "../../store/authUser";
 import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ const HomeScreen = () => {
   const { logout } = useAuthStore();
   const { trendingContent } = usegetTrendingContent();
   const { contentType } = useContentStore();
+  const [imageLoading, setImageLoading] = useState(true);
 
   if (!trendingContent) {
     return (
@@ -37,11 +38,22 @@ const HomeScreen = () => {
     <>
       <div className="relative h-screen text-white">
         <Navbar />
+        {imageLoading && (
+          <Skeleton
+            className="absolute top-0 left-0 w-full h-full -z-50 "
+            baseColor="#111"
+            highlightColor="#000"
+            duration={2}
+          />
+        )}
 
         <img
           src={`${ORIGINAL_IMG_BASE_URL}${trendingContent?.backdrop_path}`}
           alt="hero-img"
           className="absolute top-0 left-0 w-full h-full object-cover -z-50"
+          onLoad={() => {
+            setImageLoading(false);
+          }}
         />
 
         <div
