@@ -21,6 +21,7 @@ const SearchPage = () => {
   };
   const handleSearch = async (e) => {
     e.preventDefault();
+
     try {
       const res = await axios.get(`/api/v1/search/${activeTab}/${searchTerm}`);
       setResults(res.data.results);
@@ -102,6 +103,7 @@ const SearchPage = () => {
                       result?.title?.split("-").join("") ||
                       result?.name?.split("-").join("")
                     }`}
+                    onClick={() => setContentType(activeTab)}
                   >
                     <img
                       src={ORIGINAL_IMG_BASE_URL + result.poster_path}
