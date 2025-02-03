@@ -57,7 +57,6 @@ export const signUp = asyncHandler(async (req, res) => {
       },
     });
   } catch (error) {
-    console.log("Error in Signup", error);
     return res.status(500).json({ message: "Server Error" });
   }
 });
@@ -93,7 +92,6 @@ export const Login = asyncHandler(async (req, res) => {
       },
     });
   } catch (error) {
-    console.log("Error in Login", error);
     return res.status(500).json({ message: "Server Error" });
   }
 });
@@ -104,7 +102,6 @@ export const Logout = asyncHandler((req, res) => {
     res.clearCookie("jwt-netflix");
     res.json({ success: true, message: "Logged out successfully" });
   } catch (error) {
-    console.log("Error in Logout", error);
     return res.status(500).json({ message: "Server Error" });
   }
 });
@@ -117,7 +114,6 @@ export const authCheck = asyncHandler((req, res) => {
       user: req.user,
     });
   } catch (error) {
-    console.log("Error in AuthCheck", error);
     return res.status(500).json({ message: "Server Error" });
   }
 });

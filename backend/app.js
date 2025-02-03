@@ -6,10 +6,24 @@ import cookieParser from "cookie-parser";
 import { protectRoute } from "./middleware/protectRoute.js";
 import SearchRoute from "./routes/search.routes.js";
 
+import path from "path";
+
 const app = express();
+
+const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
+
+// Serve static files from the frontend/dist directory in production mode
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/movie", protectRoute, movieRoute);

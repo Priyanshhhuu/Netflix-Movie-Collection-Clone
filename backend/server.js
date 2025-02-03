@@ -6,7 +6,6 @@ dotenv.config();
 connectDb()
   .then(() => {
     app.on("error", (err) => {
-      console.log("Err: ", err);
       throw err;
     });
     app.listen(process.env.PORT || 8000, () => {
